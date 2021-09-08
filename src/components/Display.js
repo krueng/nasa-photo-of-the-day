@@ -12,11 +12,10 @@ export default function Display(props) {
             .get(`${BASE_URL}${API_KEY}`)
             .then(res => {
                 setDetails(res.data);
-                console.log(res.data);
             })
             .catch(err => console.error('Display.js: ', err))
     }, [])
-    // console.log(details.hdurl);
+
     return (
         <div>
             <p><strong>{details.date}: {details.title}</strong></p>
