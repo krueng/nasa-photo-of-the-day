@@ -1,13 +1,17 @@
 import React from "react";
+import NavBar from './components/NavBar'
+import Display from "./components/Display";
+import Footer from './components/Footer'
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun <span role="img" aria-label='go!'>🚀</span>!
-      </p>
+      <NavBar />
+      <div>
+        <Display />
+      </div>
+      <Footer />
     </div>
   );
 }
