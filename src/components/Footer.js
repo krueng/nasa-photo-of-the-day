@@ -1,6 +1,7 @@
 import React from "react";
 import styled from 'styled-components'
 import { API_KEY, BASE_URL } from "../constants";
+import moment from 'moment';
 
 const StyledFooter = styled.div`
   border-top: 1px solid #3333;
@@ -11,17 +12,15 @@ const StyledFooter = styled.div`
   background: #ffffff;
 `
 
-
-
 const Footer = (props) => {
   const today = new Date()
   const yesterday = new Date(today)
 
   yesterday.setDate(yesterday.getDate() - 1)
 
-  // today.toDateString()
-  // yesterday.toDateString()
-const href = `${BASE_URL}?api_key=${API_KEY}&date=${yesterday.toISOString().split('T')[0]}`;
+  var dateString = yesterday.getFullYear() + "-" + (yesterday.getMonth() + 1) + "-" + yesterday.getDate();
+
+  const href = `&date=${dateString}`;
   return (
     <StyledFooter>
       <a href={href} >Yesterday`s Picture</a>

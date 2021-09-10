@@ -3,7 +3,6 @@ import { BASE_URL, API_KEY } from '../constants';
 import axios from 'axios';
 import styled from 'styled-components'
 import  theme from '../theme';
-import moment from 'moment';
 
 const StyledDisplay = styled.div`
     vertical-align: top;
@@ -37,33 +36,14 @@ a {
 }
 `
 
-// let year = document.getElementById('year');
-// let month = document.getElementById('month');
-// let days = document.getElementById('days');
-
-// month.addEventListener('change', function(event) {
-//     // do calculations here to find out how many days in month
-//     let dateString = month + "-" + year;
-//     let dayLength = moment(dateString, "MM-YYYY").daysInMonth();
-
-//     // wipe out all of the days
-//     days.innerHTML = "";
-
-//     // add back all the days.
-//     for(let g = 1; g < dayLength + 1; g++) {
-//         let option = document.createElement('option');
-//         option.value = g;
-//         days.appendChild(option);
-//     }
-// });
+const getDate = window.location.href.split('&date=')[1] ?? ''; //if result is null or undefined set to empty
 
 export default function Display(props) {
-    // const { title, imgUrl, description } = props;
     const [details, setDetails] = useState([])
 
     useEffect(() => {
         axios
-            .get(`${BASE_URL}?api_key=${API_KEY}`)
+            .get(`${BASE_URL}?api_key=${API_KEY}&date=${getDate}`)
             .then(res => {
                 setDetails(res.data);
             })
